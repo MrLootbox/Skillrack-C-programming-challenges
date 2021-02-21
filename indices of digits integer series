@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include<string.h>
+
+
+
+
+int main()
+{
+    
+    int tot_val;
+    char SearchElement[100],convertedString[1000]="",s[100]="";
+    scanf("%d %s",&tot_val,SearchElement);
+ 
+        //the below loop is to convert the numbers from 0 to input N into concatinated string 
+        for(int i=0;i<=tot_val;i++){
+           //sprintf is used to convert int to string type
+           
+           sprintf(s, "%d", i); 
+            //strcat is used to concatinate the converted value into an empty string
+            strcat(convertedString,s);
+        }
+//searching process , from each element in the converted string we comapare if the start value of search element is found then we compare the rest of the search element
+for(int i=0;i<strlen(convertedString);i++){
+    int flag=0;
+    if(convertedString[i]==SearchElement[0]){
+    for(int j=i;j<i+strlen(SearchElement);j++){
+        if(convertedString[j]!=SearchElement[j-i]){
+          flag=1;
+          break;
+             
+        }
+        
+    }
+    //if flag is 0 even after the searching process then we can conclude that all the elements of A are present in that position 
+    if(!flag){
+       for(int l=0;l<strlen(SearchElement);l++)
+       printf("%d ",i+l);
+        printf("\n");
+    }}
+    
+}
+
+    return 0;
+}
